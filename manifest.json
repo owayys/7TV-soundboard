@@ -3,7 +3,7 @@
     "name": "7TV Soundboard",
     "version": "1.0",
     "description": "Plays a sound for specific emotes",
-    "permissions": ["activeTab", "scripting"],
+    "permissions": ["activeTab", "scripting", "storage"],
     "background": {
         "service_worker": "background.js"
     },
@@ -15,8 +15,11 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["sound.mp3"],
+            "resources": [],
             "matches": ["https://www.twitch.tv/*"]
         }
-    ]
+    ],
+    "action": {
+        "default_popup": "index.html"
+    }
 }
