@@ -2,27 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>7TV Soundboard</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                width: 300px;
-            }
-            .trigger {
-                margin-bottom: 10px;
-            }
-            .trigger input[type="text"] {
-                width: 120px;
-            }
-            .trigger input[type="file"] {
-                width: 120px;
-            }
-        </style>
     </head>
     <body>
-        <h1>Sound Alert Extension</h1>
-        <div id="triggers"></div>
-        <button id="addTrigger">Add Trigger</button>
-        <script src="popup.js"></script>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
     </body>
 </html>

@@ -1,11 +1,23 @@
+/*global chrome*/
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 // Function to play a sound
-function playSound(soundUrl) {
+function playSound(soundUrl, volume = 1) {
     const audio = new Audio(soundUrl);
+    audio.volume = volume;
     audio.play();
 }
 
+let shouldIgnoreMutations = true; // Flag to ignore initial mutations
 // Function to check for the specific element additions
-function checkForNewElements(mutationsList, observer) {
+async function checkForNewElements(mutationsList, observer) {
+    if (shouldIgnoreMutations) {
+        // Ignore initial mutations
+        await sleep(1000);
+        shouldIgnoreMutations = false;
+        return;
+    }
     chrome.storage.local.get("triggers", (result) => {
         if (!result.triggers) return;
         const triggers = result.triggers;
@@ -28,12 +40,16 @@ function checkForNewElements(mutationsList, observer) {
                         ) {
                             const altText = emoteElement.getAttribute("alt");
                             triggers.forEach((trigger) => {
-                                if (altText === trigger.text) {
+                                if (altText === trigger?.text) {
                                     console.log(
                                         "Trigger text found in alt text:",
-                                        altText
+                                        altText,
+                                        trigger?.volume
                                     );
-                                    playSound(trigger.sound);
+                                    playSound(
+                                        trigger?.sound,
+                                        trigger?.volume / 100
+                                    );
                                 }
                             });
                         }

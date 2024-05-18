@@ -4,6 +4,7 @@
     "version": "1.0",
     "description": "Plays a sound for specific emotes",
     "permissions": ["activeTab", "scripting", "storage"],
+    "host_permissions": ["https://www.twitch.tv/*"],
     "background": {
         "service_worker": "background.js"
     },
