@@ -56,6 +56,9 @@ jobs:
                   draft: false
                   prerelease: false
 
+            - name: Ensure release folder exists
+              run: mkdir -p release
+
             - name: Upload Release Asset
               uses: actions/upload-release-asset@v1
               env:
