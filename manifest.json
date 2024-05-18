@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "7TV Soundboard",
+    "version": "1.0",
+    "description": "Plays a sound for specific emotes",
+    "permissions": ["activeTab", "scripting"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.twitch.tv/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["sound.mp3"],
+            "matches": ["https://www.twitch.tv/*"]
+        }
+    ]
+}
