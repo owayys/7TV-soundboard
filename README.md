@@ -9,8 +9,6 @@ A chrome extension that enables you to add triggers on 7TV emotes to play specif
     - Download the [latest release](https://github.com/owayys/7TV-soundboard/releases/latest/download/extension.zip).
     - Extract the `extension.zip` archive.
 
-    **OR**
-
     **Option 2: Clone and Build**
 
     - Clone this project and install the dependencies:
@@ -23,8 +21,6 @@ A chrome extension that enables you to add triggers on 7TV emotes to play specif
         ```sh
         npm run build
         ```
-
-**THEN**
 
 2. Go to your browser extension settings and enable developer mode.
 3. Load the unpacked extension in your browser.
