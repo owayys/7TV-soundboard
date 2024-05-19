@@ -13,8 +13,6 @@ https://github.com/owayys/7TV-soundboard/assets/76042418/54dc872e-5c47-4d06-8f3c
     - Download the [latest release](https://github.com/owayys/7TV-soundboard/releases/latest/download/extension.zip).
     - Extract the `extension.zip` archive.
 
-    **OR**
-
     **Option 2: Clone and Build**
 
     - Clone this project and install the dependencies:
@@ -27,8 +25,6 @@ https://github.com/owayys/7TV-soundboard/assets/76042418/54dc872e-5c47-4d06-8f3c
         ```sh
         npm run build
         ```
-
-**THEN**
 
 2. Go to your browser extension settings and enable developer mode.
 3. Load the unpacked extension in your browser.
