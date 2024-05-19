@@ -2,6 +2,10 @@
 
 A chrome extension that enables you to add triggers on 7TV emotes to play specified soundclips.
 
+# Demo
+
+[![Demo Video]](/demo/7TV-soundboard-demo.mp4)
+
 # Usage
 
 1. **Option 1: Download and Extract**
