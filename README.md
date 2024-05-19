@@ -4,11 +4,31 @@ A chrome extension that enables you to add triggers on 7TV emotes to play specif
 
 # Usage
 
-1. Install the dependencies by running `npm install`.
-2. Build the project by running `npm run build`.
-3. Turn on developer mode in your browser.
-4. Load the unpacked extension in your browser.
-5. Select the `dist` folder that was generated during the build process.
+1. **Option 1: Download and Extract**
+
+    - Download the [latest release](https://github.com/owayys/7TV-soundboard/releases/latest/download/extension.zip).
+    - Extract the `extension.zip` archive.
+
+    **OR**
+
+    **Option 2: Clone and Build**
+
+    - Clone this project and install the dependencies:
+        ```sh
+        git clone https://github.com/owayys/7TV-soundboard.git
+        cd 7TV-soundboard
+        npm install
+        ```
+    - Build the project:
+        ```sh
+        npm run build
+        ```
+
+**THEN**
+
+2. Go to your browser extension settings and enable developer mode.
+3. Load the unpacked extension in your browser.
+4. Select the `dist` folder that was generated during the process.
 
 Once the extension is loaded, you should be able to use the 7TV Soundboard.
 
