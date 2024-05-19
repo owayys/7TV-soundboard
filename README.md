@@ -44,4 +44,4 @@ Once the extension is loaded, you should be able to use the 7TV Soundboard.
 -   [x] Channel-specific triggers.
 -   [x] Mute all.
 -   [ ] Channel-specific mute.
--   [ ] Validate emote names with API calls.
+-   [ ] Validate emote names with Twitch & 7TV API calls.
