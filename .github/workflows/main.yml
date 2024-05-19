@@ -28,6 +28,9 @@ jobs:
             - name: Build the extension
               run: npm run build
 
+            - name: Install zip
+              run: sudo apt-get install zip
+
             - name: Archive dist folder
               run: |
                   mkdir -p release
