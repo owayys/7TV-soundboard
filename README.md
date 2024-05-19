@@ -34,3 +34,5 @@ Once the extension is loaded, you should be able to use the 7TV Soundboard.
 -   [x] Per-trigger volume control.
 -   [x] Preview added trigger soundclips.
 -   [ ] Validate emote names with API calls.
+-   [ ] Channel-specific triggers.
+-   [ ] Mute all.
