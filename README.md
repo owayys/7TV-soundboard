@@ -4,7 +4,7 @@ A chrome extension that enables you to add triggers on 7TV emotes to play specif
 
 # Demo
 
-[![Demo Video]](https://github.com/owayys/7TV-soundboard/blob/main/demo/7TV-soundboard-demo.mp4)
+https://github.com/owayys/7TV-soundboard/assets/76042418/6fdf27a3-ba61-4319-a811-9050408e65a5
 
 # Usage
 
