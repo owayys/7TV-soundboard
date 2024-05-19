@@ -40,15 +40,31 @@ async function checkForNewElements(mutationsList, observer) {
                         ) {
                             const altText = emoteElement.getAttribute("alt");
                             triggers.forEach((trigger) => {
-                                if (altText === trigger?.text) {
+                                console.log(window.location.href, trigger?.url);
+                                if (
+                                    altText === trigger?.text &&
+                                    window.location.href === trigger?.url
+                                ) {
                                     console.log(
                                         "Trigger text found in alt text:",
                                         altText,
                                         trigger?.volume
                                     );
-                                    playSound(
-                                        trigger?.sound,
-                                        trigger?.volume / 100
+                                    chrome.storage.local.get(
+                                        "triggersMuteAll",
+                                        (result) => {
+                                            if (result.triggersMuteAll) {
+                                                console.log(
+                                                    "Mute all is enabled"
+                                                );
+                                                return;
+                                            }
+
+                                            playSound(
+                                                trigger?.sound,
+                                                trigger?.volume / 100
+                                            );
+                                        }
                                     );
                                 }
                             });

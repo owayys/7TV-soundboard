@@ -10,11 +10,28 @@ function App() {
     const [newTriggerText, setNewTriggerText] = useState("");
     const [newTriggerSound, setNewTriggerSound] = useState(null);
     const [newTriggerVolume, setNewTriggerVolume] = useState(100);
+    const [currentTabUrl, setCurrentTabUrl] = useState("");
+    const [muteAll, setMuteAll] = useState(false);
 
     useEffect(() => {
         chrome.storage.local.get("triggers", (result) => {
             if (result.triggers) {
                 setTriggers(result.triggers);
+                console.log("Triggers loaded from storage", result.triggers);
+            }
+        });
+
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            setCurrentTabUrl(tabs[0].url);
+        });
+
+        chrome.storage.local.get("triggersMuteAll", (result) => {
+            if (result.triggersMuteAll) {
+                setMuteAll(result.triggersMuteAll);
+                console.log(
+                    "MuteAll loaded from storage",
+                    result.triggersMuteAll
+                );
             }
         });
     }, []);
@@ -31,6 +48,17 @@ function App() {
                     alignItems: "center",
                 }}
             >
+                <button
+                    onClick={() => {
+                        chrome.storage.local
+                            .set({ triggersMuteAll: !muteAll })
+                            .then(() => {
+                                setMuteAll(!muteAll);
+                            });
+                    }}
+                >
+                    {muteAll ? "Unmute" : "Mute"}
+                </button>
                 <h2>7TV Soundboard</h2>
                 <button
                     onClick={() => {
@@ -42,7 +70,7 @@ function App() {
                         color: "white",
                     }}
                 >
-                    Clear All
+                    Clear
                 </button>
             </div>
             <div
@@ -53,9 +81,11 @@ function App() {
                     marginBottom: "10px",
                 }}
             >
-                {triggers.map((trigger, index) => (
-                    <Trigger key={index} trigger={trigger} />
-                ))}
+                {triggers
+                    .filter((trigger) => trigger?.url === currentTabUrl)
+                    .map((trigger, index) => (
+                        <Trigger key={index} trigger={trigger} />
+                    ))}
             </div>
             <hr
                 style={{

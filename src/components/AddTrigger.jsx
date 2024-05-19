@@ -15,40 +15,49 @@ const AddTrigger = ({
     };
 
     const handleNewTrigger = () => {
-        console.log(
-            triggers,
-            newTriggerText,
-            newTriggerSound,
-            newTriggerVolume
-        );
         if (!newTriggerText) console.log("No trigger text provided");
         if (!newTriggerSound) console.log("No trigger sound provided");
-        if (
-            newTriggerText &&
-            newTriggerSound &&
-            !triggers.find((trigger) => trigger.text === newTriggerText)
-        ) {
+        if (newTriggerText && newTriggerSound) {
             let newTrigger;
             const reader = new FileReader();
             reader.onload = function (e) {
-                newTrigger = {
-                    text: newTriggerText,
-                    sound: e.target.result,
-                    volume: newTriggerVolume,
-                };
-                console.log(newTrigger);
-                chrome.storage.local
-                    .set({
-                        triggers: [...triggers, newTrigger],
-                    })
-                    .then(() => {
-                        console.log("Trigger added to storage");
-                        setTriggers([...triggers, newTrigger]);
-                        setNewTriggerText("");
-                        setNewTriggerSound(null);
-                        setNewTriggerVolume(100);
-                        document.getElementById("fileInput").value = "";
-                    });
+                console.log("Sound file read");
+                chrome.tabs.query(
+                    { active: true, currentWindow: true },
+                    (tabs) => {
+                        console.log("Current tab URL:", tabs[0].url);
+                        if (
+                            triggers.find(
+                                (trigger) =>
+                                    trigger.text === newTriggerText &&
+                                    trigger.url === tabs[0].url
+                            )
+                        ) {
+                            console.log("Trigger already exists");
+                            return;
+                        }
+                        newTrigger = {
+                            text: newTriggerText,
+                            sound: e.target.result,
+                            volume: newTriggerVolume,
+                            url: tabs[0].url,
+                        };
+                        console.log(newTrigger);
+                        chrome.storage.local
+                            .set({
+                                triggers: [...triggers, newTrigger],
+                            })
+                            .then(() => {
+                                console.log(newTrigger);
+                                console.log("Trigger added to storage");
+                                setTriggers([...triggers, newTrigger]);
+                                setNewTriggerText("");
+                                setNewTriggerSound(null);
+                                setNewTriggerVolume(100);
+                                document.getElementById("fileInput").value = "";
+                            });
+                    }
+                );
             };
             reader.readAsDataURL(newTriggerSound);
         }

@@ -24,7 +24,10 @@ const Trigger = (trigger) => {
         chrome.storage.local.get("triggers", (result) => {
             if (result.triggers) {
                 const newTriggers = result.triggers.map((t) => {
-                    if (t.text === trigger.trigger.text) {
+                    if (
+                        t.text === trigger.trigger.text &&
+                        t.url === trigger.trigger.url
+                    ) {
                         return {
                             ...t,
                             volume: volume,
