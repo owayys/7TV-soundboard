@@ -6,7 +6,7 @@ on:
             - "v*.*.*"
 
 jobs:
-    build:
+    build-and-release:
         runs-on: ubuntu-latest
         permissions:
             contents: write
@@ -35,18 +35,6 @@ jobs:
               run: |
                   mkdir -p release
                   zip -r ./release/extension.zip ./dist
-
-    create_release:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-            pull-requests: write
-            repository-projects: write
-        needs: build
-
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v3
 
             - name: Create Release
               id: create_release
