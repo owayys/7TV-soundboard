@@ -4,6 +4,11 @@ A chrome extension that enables you to add triggers on 7TV emotes to play specif
 
 # Demo
 
+## Pre-requisites
+
+- The 7TV extension must be installed.
+- The trigger emote must be present in the streamer's current 7TV emote set.
+
 https://github.com/owayys/7TV-soundboard/assets/76042418/54dc872e-5c47-4d06-8f3c-2450d398685c
 
 # Usage
